@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            // 1. 처리할 객체를 선택한다.
+            let h = document.getElementById("title");
+            // 2. 선택한 객체에 대한 수정 처리를 한다.  
+            h.innerHTML = "Javascript";
+
+            //-------------------------------------------------
+            // 1. 요소 노드(li)를 모두 가져온다.
+            let liArray = document.getElementsByTagName("li");
+            alert(`총 ${liArray.length}개의 객체를 선택.`);
+            liArray[1].innerHTML = "Mr. Jang";
+            //--------------------------------------------------
+            // 4번째 li객체의 색을 파란색으로 설정하기.
+            liArray[3].style.color = "blue";
+            liArray[3].style.backgroundColor = "violet";
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title">웹개발기초II</h1>
+    <hr>
+    <h2>1학년 1반 수강자 명단</h2>
+    <ul>
+        <li>진세민</li>
+        <li>장성익</li>
+        <li>양지현</li>
+        <li>정유리</li>
+    </ul>
+</body>
+</html>
