@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img.icon {
+            width: 40px;
+            height: 40px;
+        }
+        .box {
+            text-align: center;
+        }
+    </style>
+    <script>
+        //=====================================================================
+        let fixImage = "image/game.png";
+        //=====================================================================
+        // class="icon"인 <img>를 click했을 때 실행할 이벤트핸들러 정의
+        function iconClickHandler() {
+            //fixImage의 값을 자신의 이미지 값으로 대체
+            fixImage = this.src;
+        }
+
+        function iconMouseOverHandler() {
+            //자신의 image를 main에 복사
+            document.getElementById("main").src = this.src;
+
+            let tokenArray = this.src.split("/");
+            document.querySelector("span").innerHTML = tokenArray[tokenArray.length-1];
+        }
+        function iconMouseOutHandler() {
+            //main의 image를 game.png로 복구하기
+            let tokenArray = fixImage.split("/");
+            document.querySelector("span").innerHTML = tokenArray[tokenArray.length-1];
+            
+            document.getElementById("main").src = fixImage;
+        }
+
+        //=====================================================================
+        window.onload = function() {
+            //이벤트핸들러 iconClickHandler를 class="icon" image에 각각 연결
+            let iconArray = document.getElementsByClassName("icon");
+            for(let icon of iconArray) {
+                icon.addEventListener('click', iconClickHandler);
+                icon.addEventListener('mouseover', iconMouseOverHandler);
+                icon.addEventListener('mouseout', iconMouseOutHandler);
+            }
+        }
+        //=====================================================================
+    </script>
+</head>
+<body>
+    <h1>Image Browser</h1>
+    <hr>
+    <div class="box">
+        <img id="main" src="image/game.png"><br>
+        <span>image filename here</span>
+    </div>
+    <hr>
+    <div class="box">
+        <img class="icon" src="image/game.png">
+        <img class="icon" src="image/basketball.png">
+        <img class="icon" src="image/cow.png">
+        <img class="icon" src="image/dog.png">
+        <img class="icon" src="image/soccer.png">
+        <img class="icon" src="image/sun.png">
+    </div>
+    <hr>
+</body>
+</html>
